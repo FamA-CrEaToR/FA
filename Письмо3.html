@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С 8 Марта 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(-45deg,#89f7fe,#66a6ff,#fbc2eb,#a6c1ee);
+    background-size:400% 400%;
+    animation:gradientBG 15s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.card{
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(20px);
+    padding:60px;
+    border-radius:30px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.4);
+    max-width:800px;
+    width:90%;
+    animation:fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(60px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+    font-size:50px;
+    margin-bottom:25px;
+}
+
+p{
+    font-size:20px;
+    line-height:1.8;
+}
+
+.flower{
+    position:absolute;
+    font-size:24px;
+    animation:float 10s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+0%{transform:translateY(110vh) rotate(0deg);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-10vh) rotate(360deg);opacity:0}
+}
+
+</style>
+</head>
+<body>
+
+<!-- 🌸 Падающие цветы -->
+<script>
+for(let i=0;i<30;i++){
+    const flower=document.createElement('div');
+    flower.className='flower';
+    flower.innerHTML='🌸';
+    flower.style.left=Math.random()*100+'%';
+    flower.style.animationDuration=(6+Math.random()*8)+'s';
+    flower.style.fontSize=(15+Math.random()*25)+'px';
+    document.body.appendChild(flower);
+}
+</script>
+
+<div class="card">
+    <h1 id="title">С 8 Марта! 🌷</h1>
+    <p>
+        Желаю счастья, любви, радости и исполнения всех мечт 💕<br><br>
+        Пусть каждый день будет наполнен светом и теплом ✨
+    </p>
+</div>
+
+<script>
+// Получаем имя из URL
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+
+if(name){
+    document.getElementById("title").innerText = `С 8 Марта, ${name}! 🌸`;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siz uchun 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            bottom: -10%;
+            font-size: 24px;
+            animation: floatUp linear forwards;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.5); opacity: 0; }
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 800px;
+            width: 95%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(40px, 8vw, 70px);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            font-size: clamp(18px, 4vw, 24px);
+            margin-bottom: 20px;
+        }
+
+        .typewriter-container {
+            min-height: 150px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            font-style: italic;
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 18px;
+            background-color: white;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        input[type="password"] {
+            padding: 15px 25px;
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 18px;
+            outline: none;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #fff;
+            color: #ff4e88;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 5px;
+        }
+
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+
+        .btn-yes { background: #4CAF50; color: white; }
+        .btn-no { background: #f44336; color: white; }
+
+        #countdown {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .slider-container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .slider img {
+            width: 100%;
+            border-radius: 15px;
+            max-height: 350px;
+            object-fit: cover;
+            transition: opacity 0.5s;
+        }
+
+        .answer-box {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            resize: none;
+            margin-bottom: 10px;
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .error-shake { animation: shake 0.4s; border-color: #ff4e50 !important; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 50% { transform: translateX(10px); } 75% { transform: translateX(-10px); } }
+    </style>
+</head>
+<body>
+
+    <div id="particles-container"></div>
+
+    <!-- ЭКРАН ПАРОЛЯ -->
+    <section id="lock">
+        <div class="glass">
+            <h1>Siz uchun... 💖</h1>
+            <h2>Faqat u parolni topa oladi 🔐</h2>
+            <input type="password" id="password" placeholder="Parol...">
+            <br>
+            <button class="btn" onclick="checkPassword()">Kirish 💖</button>
+        </div>
+    </section>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <section id="main" style="display:none; opacity: 0;">
+        <div class="glass">
+            <h1> 8-mart muborak! 🌸</h1>
+            
+            <div class="typewriter-container">
+                <span id="typewriter"></span><span class="cursor"></span>
+            </div>
+            
+            <p id="countdown"></p>
+            
+            <button class="btn" id="musicBtn" onclick="toggleMusic()">Musiqa 🎵</button>
+
+            <div class="slider-container">
+                <div class="slider">
+                    <img id="slide" src="https://images.unsplash.com/photo-1503431128871-16ef9822cece?q=80&w=800&auto=format&fit=crop" alt="Romantic">
+                </div>
+                <button class="btn" onclick="nextSlide()" style="margin-top: 10px;">Keyingi rasm ➡</button>
+            </div>
+
+            <!-- Блок с выбором (ответом) -->
+            <div class="answer-box" id="choiceSection" style="display:none;">
+                <h3>Sizning javobingiz qanday , Faqat yuq demang? ✨</h3>
+                <div id="buttonsSection">
+                    <button class="btn btn-yes" onclick="sendAnswer('HA')">HA </button>
+                    <button class="btn btn-no" onclick="sendAnswer('YO\'Q')">YO'Q </button>
+                </div>
+                <h3 id="answerResult" style="display:none; margin-top: 15px; color: #ffebf0;"></h3>
+
+                <!-- Блок для личного сообщения -->
+                <div style="margin-top: 30px; border-top: 1px dashed rgba(255,255,255,0.4); padding-top: 20px;">
+                    <h3 style="font-size: 18px; margin-bottom: 10px;">Yuragingizdagi gaplarni yozishingiz mumkin 💌</h3>
+                    <textarea id="userMessage" rows="4" placeholder="Sizning so'zlaringiz..."></textarea>
+                    <br>
+                    <button class="btn" onclick="sendCustomMessage()">Yuborish 📨</button>
+                    <p id="messageStatus" style="display:none; margin-top: 10px; font-weight: bold; color: #a8ffb2;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // ==========================================
+        // НАСТРОЙКИ ДЛЯ ТЕЛЕГРАМ БОТА
+        // ==========================================
+        const BOT_TOKEN = '8569527017:AAFXL5Wh41BLfE7at0RN_6SAxCwK5pfoFpE'; 
+        const CHAT_ID = 'ТВОЙ_CHAT_ID'; 
+
+        async function sendTelegramMessage(text) {
+            if (BOT_TOKEN.includes('ТВОЙ_ТОКЕН') || CHAT_ID.includes('ТВОЙ_CHAT')) {
+                console.warn("Telegram bot ma'lumotlari kiritilmagan.");
+                return;
+            }
+            
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: text,
+                        parse_mode: "HTML"
+                    })
+                });
+                const data = await response.json();
+                if (!data.ok) {
+                    console.error("Telegram error:", data.description);
+                } else {
+                    console.log("Xabar yuborildi!");
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        }
+
+        window.onload = function() {
+            sendTelegramMessage("<b>👀 Diqqat:</b> Kimdir saytga kirdi.");
+        };
+        // ==========================================
+
+
+        const romanticText = "Sevaraxon! 💖\n\nSizni bugungi nafis bahor bayrami — 8-mart bilan chin qalbimdan tabriklayman. Bilaman, mandan bunday gaplarni eshitishni kutmagandingiz, lekin man boshqa buni ichimda olib yurolmayman. Man Sizni sevaman... buni tan olish vaqti keldi.\n\nSiz man uchun shunchaki tanish qiz emassiz. Siz midnglab insonlar orasidan tanlagan va birga bo'lishni xohlagan yagona insonimsiz. Agar qarshi bo'lmasangiz, keling, birga bo'lishga harakat qilib ko'raylik. Nasib qilsa, umrimiz oxirigacha birga bo'lamiz. Siz mani kimligimni bilasiz... Man o'sha, Siz o'ylagan odamman.\n\nEng asosiysi — man Sizni chin qalbimdan sevaman. Man Sizni nafaqat hozir, balki ancha vaqt avval ham sevganman, faqat aytolmay kelayotgan edim.\n\nAgar man bilan birga bo'lishga rozilik bersangiz, shunchaki manga belgi bering. Mana shu yerda javob yozishingiz mumkin. Men Sizning har qanday qaroringizni hurmat qilaman.\n\nLekin agar yo'q deydigan bo'lsangiz ham, man baribir sizni sevaveraman. Bayramingiz muborak bo'lsin! ✨🌷\n\nHech bo'lmasa ichimdagi gaplarni ayta oldim, buning uchun o'zimni baxtli his qilaman. SIZGA KATTAKON RAHMAT!!!";
+
+        function checkPassword() {
+            const pass = document.getElementById('password').value.trim().toLowerCase();
+            if (pass === '2008' || pass === '2005' || pass === '0508') {
+                sendTelegramMessage("<b>✅ Sevaraxon</b> parolni to'g'ri topdi va kirdi!");
+                document.getElementById('lock').style.display = 'none';
+                const main = document.getElementById('main');
+                main.style.display = 'flex';
+                setTimeout(() => { main.style.opacity = '1'; }, 50);
+                startParticles();
+                setTimeout(typeWriter, 1000);
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            } else {
+                if(pass.length > 0) {
+                    sendTelegramMessage(`<b>❌ Noto'g'ri parol:</b> "${pass}"`);
+                }
+                const input = document.getElementById('password');
+                input.classList.add('error-shake');
+                input.placeholder = 'Xato parol...';
+                input.value = '';
+                setTimeout(() => input.classList.remove('error-shake'), 400);
+            }
+        }
+
+        let i = 0;
+        function typeWriter() {
+            if (i < romanticText.length) {
+                document.getElementById('typewriter').innerHTML += romanticText.charAt(i);
+                i++;
+                setTimeout(typeWriter, Math.random() * 40 + 20);
+            } else {
+                document.querySelector('.cursor').style.display = 'none';
+                document.getElementById('choiceSection').style.display = 'block';
+            }
+        }
+
+        function updateCountdown() {
+            const target = new Date(`March 8, ${new Date().getFullYear()} 00:00:00`).getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+            if (diff > 0) {
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff % 86400000) / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('countdown').innerHTML = `8-martga qoldi: ${d} kun, ${h} soat, ${m} daqiqa, ${s} soniya 💐`;
+            } else {
+                document.getElementById('countdown').innerHTML = "🎉 BAYRAMINGIZ MUBORAK BO'LSIN! 🎉";
+            }
+        }
+
+        let isPlaying = false;
+        function toggleMusic() {
+            const audio = document.getElementById('music');
+            const btn = document.getElementById('musicBtn');
+            if (isPlaying) { audio.pause(); btn.innerText = "Musiqa 🎵"; }
+            else { audio.play(); btn.innerText = "To'xtatish ⏸️"; }
+            isPlaying = !isPlaying;
+        }
+
+        const images = [
+            "https://images.unsplash.com/photo-1503431128871-16ef9822cece?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1518199266791-5375a8319d36?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1474552226712-ac0f0e629ee4?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=800&auto=format&fit=crop"
+        ];
+        let slideIndex = 0;
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % images.length;
+            const slide = document.getElementById('slide');
+            slide.style.opacity = '0';
+            setTimeout(() => { slide.src = images[slideIndex]; slide.style.opacity = '1'; }, 500);
+        }
+
+        function startParticles() {
+            const container = document.getElementById('particles-container');
+            const elements = ['🌸', '💖', '🌷', '✨', '🌹'];
+            setInterval(() => {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                p.innerText = elements[Math.floor(Math.random() * elements.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                container.appendChild(p);
+                setTimeout(() => p.remove(), 10000);
+            }, 400);
+        }
+
+        function sendAnswer(ans) {
+            sendTelegramMessage(`<b>💌 JAVOB:</b> Sevaraxon "${ans}" deb javob berdi!`);
+            document.getElementById('buttonsSection').style.display = 'none';
+            const resultText = document.getElementById('answerResult');
+            resultText.innerHTML = `Siz ${ans} deb javob berdingiz. Rahmat! ❤️`;
+            resultText.style.display = 'block';
+        }
+
+        function sendCustomMessage() {
+            const msgBox = document.getElementById('userMessage');
+            const msg = msgBox.value.trim();
+            if (msg.length > 0) {
+                sendTelegramMessage(`<b>📝 SEVARAXONDAN XABAR:</b>\n\n"${msg}"`);
+                msgBox.value = '';
+                const status = document.getElementById('messageStatus');
+                status.innerText = "Xabaringiz yuborildi! Katta rahmat 💖";
+                status.style.display = 'block';
+                setTimeout(() => { status.style.display = 'none'; }, 5000);
+            } else {
+                msgBox.classList.add('error-shake');
+                setTimeout(() => msgBox.classList.remove('error-shake'), 400);
+            }
+        }
+    </script>
+</body>
+</html>
